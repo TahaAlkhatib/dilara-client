@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
+import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { FormsModule } from '@angular/forms';
       enabled: environment.production
     })
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent,AdminLayoutComponent],
   providers: [InAppBrowser],
   bootstrap: [AppComponent]
 })

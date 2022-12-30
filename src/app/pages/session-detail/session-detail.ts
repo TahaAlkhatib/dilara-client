@@ -44,7 +44,7 @@ export class SessionDetailPage {
   }
 
   ionViewDidEnter() {
-    this.defaultHref = `/app/tabs/schedule`;
+    this.defaultHref = `/admin/tabs/schedule`;
   }
 
   sessionClick(item: string) {

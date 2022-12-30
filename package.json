@@ -65,7 +65,12 @@
     "swiper": "8.0.7",
     "tslib": "^2.0.0",
     "webdriver-manager": "^12.1.8",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "@fortawesome/fontawesome-free": "5.15.3",
+    "@popperjs/core": "2.9.1",
+    "@tailwindcss/forms": "0.2.1",
+    "chart.js": "2.9.4",
+    "tailwindcss": "2.0.4"
   },
   "devDependencies": {
     "@angular-devkit/architect": "^0.1303.0",

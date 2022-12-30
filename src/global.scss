@@ -41,3 +41,9 @@
 .swiper-slide {
   display: block;
 }
+
+body{
+    overscroll-behavior-y:unset;
+    overflow: auto !important;
+    display: contents;
+}
