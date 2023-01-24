@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule,Provider } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { IonicModule } from '@ionic/angular';
@@ -11,6 +11,24 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
+import { LanguageModule, TranslationModule, LanguageService } from '@upupa/language';
+import { AuthModule, DEFAULT_SIGNIN, DEFAULT_VERIFY } from '@upupa/auth';
+import { ConfirmModule, EventBus, UtilsModule } from '@upupa/common';
+import { DataModule } from '@upupa/data';
+import { UploadModule } from '@upupa/upload';
+
+
+const x = { DEFAULT_SIGNIN };
+const signinProvider: Provider = {
+    provide: DEFAULT_SIGNIN,
+    useFactory: (lang: LanguageService) => `/ar/account/signin`,
+    deps: [LanguageService],
+};
+const verifyProvider: Provider = {
+    provide: DEFAULT_VERIFY,
+    useFactory: (lang: LanguageService) => `/ar/account/verify`,
+    deps: [LanguageService],
+};
 
 @NgModule({
   imports: [
@@ -22,8 +40,15 @@ import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
     IonicStorageModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
-    })
-  ],
+    }),
+    UtilsModule,
+    ConfirmModule,
+    AuthModule.forRoot(`${environment.server_base_url}/auth`, null, signinProvider, null, verifyProvider),
+    DataModule.forChild(`${environment.server_base_url}/api`),
+    LanguageModule.forRoot('en', {}, 'lang', '/assets/langs'),
+    TranslationModule,
+    UploadModule.forChild(`${environment.server_base_url}/storage`)
+],
   declarations: [AppComponent,AdminLayoutComponent],
   providers: [InAppBrowser],
   bootstrap: [AppComponent]
