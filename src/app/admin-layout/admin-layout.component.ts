@@ -9,7 +9,6 @@ import { SplashScreen } from '@capacitor/splash-screen';
 
 import { Storage } from '@ionic/storage';
 
-import { UserData } from '../providers/user-data';
 @Component({
   selector: "admin-layout",
   templateUrl: "./admin-layout.component.html",
@@ -46,7 +45,6 @@ export class AdminLayoutComponent implements OnInit {
         private platform: Platform,
         private router: Router,
         private storage: Storage,
-        private userData: UserData,
         private swUpdate: SwUpdate,
         private toastCtrl: ToastController,
       ) {
@@ -88,9 +86,7 @@ export class AdminLayoutComponent implements OnInit {
       }
     
       checkLoginStatus() {
-        return this.userData.isLoggedIn().then(loggedIn => {
-          return this.updateLoggedInStatus(loggedIn);
-        });
+      
       }
     
       updateLoggedInStatus(loggedIn: boolean) {
@@ -114,9 +110,7 @@ export class AdminLayoutComponent implements OnInit {
       }
     
       logout() {
-        this.userData.logout().then(() => {
-          return this.router.navigateByUrl('/admin/tabs/schedule');
-        });
+       
       }
     
       openTutorial() {
