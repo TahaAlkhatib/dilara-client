@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'ionic.conference.app',
-  appName: 'ionic-conference-app',
+  appId: 'client.dilara.app',
+  appName: 'dilara-client',
   webDir: 'www',
   bundledWebRuntime: false,
   plugins: {

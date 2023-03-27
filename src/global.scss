@@ -10,19 +10,19 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
-@import "~@ionic/angular/css/core.css";
+@import "@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
-@import "~@ionic/angular/css/normalize.css";
-@import "~@ionic/angular/css/structure.css";
-@import "~@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
 
 /* Optional CSS utils that can be commented out */
-@import "~@ionic/angular/css/padding.css";
-@import "~@ionic/angular/css/float-elements.css";
-@import "~@ionic/angular/css/text-alignment.css";
-@import "~@ionic/angular/css/text-transformation.css";
-@import "~@ionic/angular/css/flex-utils.css";
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
 
 
 /*
@@ -34,16 +34,363 @@
 
 @import "./app/app.scss";
 
-@import '~swiper/scss';
-@import '~@ionic/angular/css/ionic-swiper';
+@import 'swiper/scss';
+@import '@ionic/angular/css/ionic-swiper';
+
+@font-face {
+  font-family: '29ltbukralight';
+  src: url('assets/fonts/29ltbukralight.otf')format("opentype");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: '29ltbukraregular';
+  src: url('assets/fonts/29ltbukraregular.otf')format("opentype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: '29ltbukrabolditalic';
+  src: url('assets/fonts/29ltbukrabolditalic.otf')format("opentype");
+  font-weight: 800;
+}
+
+
+@font-face {
+  font-family: 'AvenirNextLTPro-Demi';
+  src: url('assets/fonts/AvenirNextLTPro-Demi.otf')format("opentype");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'AvenirNextLTPro-Regular';
+  src: url('assets/fonts/AvenirNextLTPro-Regular.otf')format("opentype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'AvenirNextLTPro-Bold';
+  src: url('assets/fonts/AvenirNextLTPro-Bold.otf')format("opentype");
+  font-weight: bolder;
+}
+
+* {
+  font-family: '29ltbukrabolditalic';
+}
+
+// @font-face {
+//   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+//   src: url();
+// }
 
 // placed here instead of tutorial.scss due to slide els not getting ng scoping attribute
 .swiper-slide {
   display: block;
 }
 
-body{
-    overscroll-behavior-y:unset;
-    overflow: auto !important;
-    display: contents;
+:root {
+  --color-primary: #0d3b6f;
+  --color-secondry: #00a29d;
+  --color-danger: #EE273A;
+  --color-warning: #f9a11c;
+  --color-light-blue: #12b2ef;
+  --color-dark-blue: #053061;
+  --color-light: #d3fffe;
+  --ion-item-border-color: #0d3b6f;
+}
+
+
+dynamic-form {
+  padding: 5px;
+}
+
+
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 60px;
+  min-height: 30px;
+  background-color: var(--color-primary);
+  color: var(--color-light);
+  font-weight: bold;
+  border-radius: 5px;
+  padding: auto;
+
+  &:hover {
+    transition: all 0.1s;
+    transform: scale(1.05);
+  }
+}
+
+.btn-accept {
+  min-width: 60px;
+  min-height: 30px;
+  background-color: var(--color-secondry);
+  border-radius: 5px;
+
+  &:hover {
+    background-color: var(--color-warning);
+  }
+}
+
+.btn-warning {
+  min-width: 60px;
+  min-height: 30px;
+  background-color: var(--color-warning);
+  border-radius: 5px;
+
+  &:hover {
+    background-color: var(--color-secondry);
+  }
+}
+
+.btn-danger {
+  min-width: 60px;
+  min-height: 30px;
+  background-color: var(--color-danger);
+  border-radius: 5px;
+
+  &:hover {
+    background-color: var(--color-secondry);
+  }
+}
+
+.input-holder {
+  background: var(--color-secondry);
+  color: var(--color-primary);
+  height: 30px;
+  border-radius: 5px;
+
+  input {
+    background: transparent;
+    border: none;
+    height: 100%;
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: var(--color-dark-blue);
+      opacity: 1;
+    }
+  }
+}
+
+.normal-btn {
+  min-width: 250px;
+  max-width: 250px;
+  min-height: 40px;
+  border-radius: 25px;
+  background-color: transparent;
+  background-color: #F6f6f6;
+  color: var(--color-primary);
+  border: 1px solid #DEDEE4;
+  font-size: 0.5em;
+  font-weight: bold;
+  overflow: hidden;
+  letter-spacing: 1.1px;
+  transition: all 0.2s;
+
+  &:hover {
+    color: var(--color-secondry);
+    background-color: #DEDEE4;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transform: scale(1.1);
+
+    box-shadow: 0px 3px 6px #00000029;
+  }
+}
+
+.block {
+  position: relative;
+}
+
+.block:before,
+.block:after {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  background: linear-gradient(45deg, #0d3b6f, #00a29d, #0d3b6f, #00a29d, #0d3b6f);
+  background-size: 400%;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  border-radius: 5px;
+  z-index: -1;
+  animation: steam 20s linear infinite;
+}
+
+@keyframes steam {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.block:after {
+  // filter: blur(50px);
+}
+
+.dynamic-dialog-youtube {
+  mat-dialog-container {
+
+    display: grid;
+    background-color: transparent;
+    padding: 0;
+    justify-items: center;
+    box-shadow: none;
+
+    button {
+      color: #fff;
+    }
+
+    iframe {
+      background-color: gray;
+    }
+  }
+}
+
+.dynamic-dialog-content {
+
+  mat-dialog-container {
+    background-color: white;
+    padding: 10px;
+    color: black
+  }
+}
+
+.dynamic-dialog-pdf {
+  mat-dialog-container {
+    background-color: white;
+    padding: 10px;
+    color: black
+  }
+}
+
+.ion-page {
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+.white-space {
+  height: 65px;
+  width: 100%;
+  background-color: white;
+}
+
+.custom-modalbox {
+  mat-dialog-container {
+    background-color: #0d3b6f;
+  }
+
+  button {
+    color: white;
+    font-weight: bolder;
+  }
+}
+
+
+.html {
+
+  width: 100%;
+  color: var(--color-primary);
+  padding: 10px;
+  border: 1px solid var(--color-primary);
+  border-radius: 10px;
+
+  .content {
+
+    p {
+      font-size: 0.6em;
+      line-height: 16px;
+      font-family: '29ltbukraregular';
+      color: var(--color-primary);
+
+      strong {
+        color: var(--color-primary);
+      }
+    }
+
+    ul,
+    ol {
+      font-size: 0.7em;
+      line-height: 18px;
+      font-family: '29ltbukraregular';
+      color: var(--color-primary);
+
+      li {
+        font-size: 0.6em;
+        line-height: 16px;
+      }
+
+      strong {
+        color: var(--color-primary);
+      }
+    }
+
+    h1 {
+      font-size: 1.2em;
+      color: var(--color-secondry);
+      line-height: 36px;
+
+    }
+
+    h2 {
+      font-size: 1.1em;
+      color: var(--color-secondry);
+      line-height: 32px;
+
+    }
+
+    h3 {
+      font-size: 1em;
+      color: var(--color-secondry);
+      line-height: 28px;
+
+    }
+
+    h4 {
+      font-size: 0.9em;
+      color: var(--color-secondry);
+      line-height: 24px;
+
+    }
+
+    h5 {
+      font-size: 0.8em;
+      color: var(--color-secondry);
+      line-height: 20px;
+
+    }
+
+    h6 {
+      font-size: 0.7em;
+      color: var(--color-secondry);
+      line-height: 18px;
+
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: '29ltbukrabolditalic';
+
+  }
+
+
 }
