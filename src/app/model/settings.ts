@@ -1,6 +1,6 @@
 
 
-export class Setting  {
+export class Settings  {
     _id: string
     
 

@@ -5,20 +5,21 @@ import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home',
+    redirectTo: '/en/home',
     pathMatch: 'full'
   },
   {
-    path: 'account',
+    path: ':lang/account',
+    component: AdminLayoutComponent,
     loadChildren: () => import('./account/account.module').then(m => m.AccountsModule)
   },
   {
-    path: 'admin',
+    path: ':lang/admin',
     component:AdminLayoutComponent,
     loadChildren: () => import('./pages/tabs-page/tabs-page.module').then(m => m.TabsModule)
   },
   {
-    path: 'home',
+    path: ':lang/home',
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   }
 ];

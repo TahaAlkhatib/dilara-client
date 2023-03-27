@@ -12,15 +12,14 @@ import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { LanguageModule, TranslationModule, LanguageService } from '@upupa/language';
-import { AuthModule, DEFAULT_SIGNIN, DEFAULT_VERIFY } from '@upupa/auth';
+import { AuthModule, DEFAULT_LOGIN, DEFAULT_VERIFY } from '@upupa/auth';
 import { ConfirmModule, EventBus, UtilsModule } from '@upupa/common';
 import { DataModule } from '@upupa/data';
 import { UploadModule } from '@upupa/upload';
 
 
-const x = { DEFAULT_SIGNIN };
 const signinProvider: Provider = {
-    provide: DEFAULT_SIGNIN,
+    provide: DEFAULT_LOGIN,
     useFactory: (lang: LanguageService) => `/ar/account/signin`,
     deps: [LanguageService],
 };
@@ -43,7 +42,7 @@ const verifyProvider: Provider = {
     }),
     UtilsModule,
     ConfirmModule,
-    AuthModule.forRoot(`${environment.server_base_url}/auth`, null, signinProvider, null, verifyProvider),
+    AuthModule.forRoot(`${environment.server_base_url}/auth`,{ default_login_url:signinProvider,default_verify_url:verifyProvider}),
     DataModule.forChild(`${environment.server_base_url}/api`),
     LanguageModule.forRoot('en', {}, 'lang', '/assets/langs'),
     TranslationModule,

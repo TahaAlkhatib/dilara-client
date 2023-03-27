@@ -1,0 +1,24 @@
+<p>patient details</p>
+<div>
+    {{patient?._id}}
+</div>
+<div>
+    {{patient?.name}}
+</div>
+<div>
+    {{patient?.fatherName}}
+</div>
+<div>
+    {{patient?.motherName}}
+</div>
+<div>
+    {{patient?.dateOfBirth}}
+</div>
+<div>
+    {{patient?.notes}}
+</div>
+
+<div>
+    <img [src]="serverUrl+'/'+patient?.picture[0]?.path" alt="error">
+
+</div>

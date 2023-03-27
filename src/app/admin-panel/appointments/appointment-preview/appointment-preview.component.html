@@ -1,0 +1,24 @@
+<p>appointment details</p>
+<div>
+    {{appointment?._id}}
+</div>
+<div>
+    {{appointment?.name}}
+</div>
+<div>
+    {{appointment?.fatherName}}
+</div>
+<div>
+    {{appointment?.motherName}}
+</div>
+<div>
+    {{appointment?.dateOfBirth}}
+</div>
+<div>
+    {{appointment?.notes}}
+</div>
+
+<div>
+    <img [src]="serverUrl+'/'+appointment?.picture[0]?.path" alt="error">
+
+</div>
