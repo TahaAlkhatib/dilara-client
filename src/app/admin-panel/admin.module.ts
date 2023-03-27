@@ -11,6 +11,8 @@ import { IonicModule } from '@ionic/angular';
 import { AdminRouterModule } from './admin-routing.module';
 import { DashboardPage } from './dashboard/dashboard-page';
 import { FormsModule } from '@angular/forms';
+import { NotificationsFormComponent } from './notifications/notifications-form.component';
+import { AdminPermissionsComponent } from './permissions/admin-permissions/admin-permissions.component';
 
 
 @NgModule({
@@ -24,7 +26,7 @@ import { FormsModule } from '@angular/forms';
     providers: [
 
     ],
-    declarations: [DashboardPage],
+    declarations: [DashboardPage,NotificationsFormComponent,AdminPermissionsComponent],
     exports: []
 })
 export class AdminModule { }
