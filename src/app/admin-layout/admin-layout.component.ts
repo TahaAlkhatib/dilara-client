@@ -20,108 +20,60 @@ import { LanguageService } from "@upupa/language";
 export class AdminLayoutComponent implements OnInit {
     appPages = [
         {
-            title: 'Awareness',
-            url: 'contentitems/contentitems-list',
+            title: 'Appointments',
+            url: 'appointment',
             prefix: 'admin',
             icon: 'calendar',
             open: false,
             children: [
                 {
-                    title: 'Human Rights Manual',
-                    url: 'awhum',
+                    title: 'New Appointment',
+                    url: 'add',
                     icon: 'document'
                 },
                 {
-                    title: 'Refugees Manual',
-                    url: 'awref',
-                    icon: 'document'
-                },
-                {
-                    title: 'Women Rights Manual',
-                    url: 'awwom',
-                    icon: 'document'
-                },
-                {
-                    title: 'Childhood Manual',
-                    url: 'awchi',
-                    icon: 'document'
-                },
-                {
-                    title: 'Public Health Manual',
-                    url: 'awpub',
-                    icon: 'document'
-                },
-                {
-                    title: 'Hygiene Manual',
-                    url: 'awhyg',
-                    icon: 'document'
-                },
-                {
-                    title: 'Workers Rights Manual',
-                    url: 'awwor',
-                    icon: 'document'
-                },
-                {
-                    title: 'Social Cohesion manual',
-                    url: 'awsoc',
-                    icon: 'document'
-                },
-                {
-                    title: 'Emergency contacts',
-                    url: 'aweme',
-                    icon: 'document'
-                },
-                {
-                    title: 'Reporting harassment, exploitation and abuse',
-                    url: 'awrep',
+                    title: 'Appointments List',
+                    url: 'list',
                     icon: 'document'
                 }
-
             ]
-        },{
-            title: 'BENs',
-            url: 'contentitems/contentitems-list',
+        },
+        {
+            title: 'Patients',
+            url: 'patient',
             prefix: 'admin',
             icon: 'people',
             open: false,
             children: [
                 {
-                    title: 'Contact Camp Management',
-                    url: 'becon',
+                    title: 'New Patient',
+                    url: 'add',
                     icon: 'document'
                 },
                 {
-                    title: 'Camp location',
-                    url: 'becam',
-                    icon: 'document'
-                },
-                {
-                    title: 'Emergency contacts',
-                    url: 'beeme',
-                    icon: 'document'
-                },
-                {
-                    title: 'Health care',
-                    url: 'behea',
-                    icon: 'document'
-                },
-                {
-                    title: 'Learning and training',
-                    url: 'belea',
-                    icon: 'document'
-                },
-                {
-                    title: 'WATAN services',
-                    url: 'bewat',
-                    icon: 'document'
-                },
-                {
-                    title: 'Local and International News',
-                    url: 'beloc',
+                    title: 'Patients List',
+                    url: 'list',
                     icon: 'document'
                 }
-            
-
+            ]
+        },
+        {
+            title: 'Payments',
+            url: 'payment',
+            prefix: 'admin',
+            icon: 'people',
+            open: false,
+            children: [
+                {
+                    title: 'New Patient',
+                    url: 'add',
+                    icon: 'document'
+                },
+                {
+                    title: 'Patients List',
+                    url: 'list',
+                    icon: 'document'
+                }
             ]
         },
         {
@@ -151,20 +103,69 @@ export class AdminLayoutComponent implements OnInit {
             open: false,
             children: [
                 {
-                    title: 'Camp',
-                    url: 'camp/camp-list',
+                    title: 'Permissions',
+                    url: 'permissions',
+                    icon: 'document'
+                }
+            ]
+        }
+    ];
+
+    websitePages = [
+        {
+            title: 'Fixed Content',
+            url: 'website',
+            prefix: 'admin',
+            icon: 'calendar',
+            open: false,
+            children: [
+                {
+                    title: 'Home',
+                    url: 'home',
+                    icon: 'document'
+                },
+                {
+                    title: 'About',
+                    url: 'about',
+                    icon: 'document'
+                }
+            ]
+        }, {
+            title: 'Articles',
+            url: 'article',
+            prefix: 'admin',
+            icon: 'people',
+            open: false,
+            children: [
+                {
+                    title: 'New Article',
+                    url: 'form',
+                    icon: 'document'
+                },
+                {
+                    title: 'Articles List',
+                    url: 'list',
                     icon: 'document'
                 }
             ]
         },
         {
-            title: 'About',
-            url: 'about',
-            prefix: '/app/tabs/',
-            icon: 'information-circle',
-            open: false
+            title: 'Settings',
+            url: 'settings',
+            prefix: 'admin',
+            icon: 'map',
+            open: false,
+            children: [
+                {
+                    title: 'Camp',
+                    url: 'camp/camp-list',
+                    icon: 'document'
+                }
+            ]
         }
     ];
+
+
     dark = false;
     user;
 
@@ -179,7 +180,7 @@ export class AdminLayoutComponent implements OnInit {
         private toastCtrl: ToastController,
         private appService: AppService,
         private auth: AuthService,
-        private langService:LanguageService
+        private langService: LanguageService
     ) {
         this.initializeApp();
     }
@@ -213,7 +214,7 @@ export class AdminLayoutComponent implements OnInit {
             console.log('user :', this.user)
         })
 
-        this.appService.title.subscribe(res=>this.title = res)
+        this.appService.title.subscribe(res => this.title = res)
     }
 
     initializeApp() {
@@ -226,8 +227,13 @@ export class AdminLayoutComponent implements OnInit {
         });
     }
 
-    navigate(p,sub){
-        this.router.navigateByUrl(`en/${p.prefix}/${p.url}/${sub.url}`)
+    navigate(p, sub) {
+        if (sub)
+            this.router.navigateByUrl(`en/${p.prefix}/${p.url}/${sub.url}`)
+        else {
+            if (!p.children?.length)
+                this.router.navigateByUrl(`en/${p.prefix}/${p.url}`)
+        }
     }
 
 

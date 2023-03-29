@@ -53,7 +53,7 @@ export class PaymentFormComponent implements OnInit {
             const res = await this.ds.post('payment', this.model)
         }
         this.snack.openSuccess()
-        this.router.navigateByUrl('en/admin/settings/payment/payment-list')
+        this.router.navigateByUrl('en/admin/payment/list')
     }
 
     goBack(){

@@ -16,6 +16,10 @@ import { AuthModule, DEFAULT_LOGIN, DEFAULT_VERIFY } from '@upupa/auth';
 import { ConfirmModule, EventBus, UtilsModule } from '@upupa/common';
 import { DataModule } from '@upupa/data';
 import { UploadModule } from '@upupa/upload';
+import { DynamicFormModule } from '@upupa/dynamic-form';
+import { DynamicFormMaterialThemeModule, materialThemeComponentMapper } from '@upupa/dynamic-form-material-theme';
+import { HtmlEditorComponent } from '@upupa/html-editor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 const signinProvider: Provider = {
@@ -28,6 +32,11 @@ const verifyProvider: Provider = {
     useFactory: (lang: LanguageService) => `/ar/account/verify`,
     deps: [LanguageService],
 };
+
+const htmlMapper = {
+    ...materialThemeComponentMapper,
+    'html': { component: HtmlEditorComponent }
+}
 
 @NgModule({
   imports: [
@@ -44,8 +53,10 @@ const verifyProvider: Provider = {
     ConfirmModule,
     AuthModule.forRoot(`${environment.server_base_url}/auth`,{ default_login_url:signinProvider,default_verify_url:verifyProvider}),
     DataModule.forChild(`${environment.server_base_url}/api`),
+    DynamicFormModule.forRoot([],{'material':htmlMapper},'material',{enableLogs:!environment.production}),DynamicFormMaterialThemeModule,
     LanguageModule.forRoot('en', {}, 'lang', '/assets/langs'),
     TranslationModule,
+    BrowserAnimationsModule,
     UploadModule.forChild(`${environment.server_base_url}/storage`)
 ],
   declarations: [AppComponent,AdminLayoutComponent],

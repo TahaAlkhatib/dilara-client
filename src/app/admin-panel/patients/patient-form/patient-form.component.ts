@@ -53,7 +53,7 @@ export class PatientFormComponent implements OnInit {
             const res = await this.ds.post('patient', this.model)
         }
         this.snack.openSuccess()
-        this.router.navigateByUrl('en/admin/settings/patient/patient-list')
+        this.router.navigateByUrl('en/admin/patient/list')
     }
 
     goBack(){

@@ -51,12 +51,12 @@ export class PaymentComponent implements OnInit {
 
         switch (x.action.name) {
             case 'preview':
-                this.router.navigateByUrl(`en/admin/settings/payment/preview-payment/${x.data[0]._id}`)
+                this.router.navigateByUrl(`en/admin/payment/view/${x.data[0]._id}`)
                 break;
             case 'create':
-                this.router.navigateByUrl('en/admin/settings/payment/add-payment')
+                this.router.navigateByUrl('en/admin/payment/add')
                 break;
-            case 'edit': this.router.navigateByUrl(`en/admin/settings/payment/edit-payment/${x.data[0]._id}`); break;
+            case 'edit': this.router.navigateByUrl(`en/admin/payment/edit/${x.data[0]._id}`); break;
             case 'delete':
                 const dialogData = { maxWidth: '320px', title: 'Delete', confirmText: 'Permanently' } as ConfirmOptions
                 if (await this.confirmService.openWarning(dialogData)) {

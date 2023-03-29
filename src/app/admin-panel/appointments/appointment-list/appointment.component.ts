@@ -51,12 +51,12 @@ export class AppointmentComponent implements OnInit {
 
         switch (x.action.name) {
             case 'preview':
-                this.router.navigateByUrl(`en/admin/settings/appointment/preview-appointment/${x.data[0]._id}`)
+                this.router.navigateByUrl(`en/admin/appointment/view/${x.data[0]._id}`)
                 break;
             case 'create':
-                this.router.navigateByUrl('en/admin/settings/appointment/add-appointment')
+                this.router.navigateByUrl('en/admin/appointment/add')
                 break;
-            case 'edit': this.router.navigateByUrl(`en/admin/settings/appointment/edit-appointment/${x.data[0]._id}`); break;
+            case 'edit': this.router.navigateByUrl(`en/admin/appointment/edit/${x.data[0]._id}`); break;
             case 'delete':
                 const dialogData = { maxWidth: '320px', title: 'Delete', confirmText: 'Permanently' } as ConfirmOptions
                 if (await this.confirmService.openWarning(dialogData)) {

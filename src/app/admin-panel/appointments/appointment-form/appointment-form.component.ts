@@ -53,7 +53,7 @@ export class AppointmentFormComponent implements OnInit {
             const res = await this.ds.post('appointment', this.model)
         }
         this.snack.openSuccess()
-        this.router.navigateByUrl('en/admin/settings/appointment/appointment-list')
+        this.router.navigateByUrl('en/admin/appointment/list')
     }
 
     goBack(){

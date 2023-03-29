@@ -3,22 +3,15 @@
     {{appointment?._id}}
 </div>
 <div>
-    {{appointment?.name}}
+    {{appointment?.patientId}}
 </div>
 <div>
-    {{appointment?.fatherName}}
+    {{appointment?.date}}
 </div>
 <div>
-    {{appointment?.motherName}}
-</div>
-<div>
-    {{appointment?.dateOfBirth}}
+    {{appointment?.status}}
 </div>
 <div>
     {{appointment?.notes}}
 </div>
 
-<div>
-    <img [src]="serverUrl+'/'+appointment?.picture[0]?.path" alt="error">
-
-</div>

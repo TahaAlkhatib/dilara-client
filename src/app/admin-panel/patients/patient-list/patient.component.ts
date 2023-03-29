@@ -51,12 +51,12 @@ export class PatientComponent implements OnInit {
 
         switch (x.action.name) {
             case 'preview':
-                this.router.navigateByUrl(`en/admin/settings/patient/preview-patient/${x.data[0]._id}`)
+                this.router.navigateByUrl(`en/admin/patient/view/${x.data[0]._id}`)
                 break;
             case 'create':
-                this.router.navigateByUrl('en/admin/settings/patient/add-patient')
+                this.router.navigateByUrl('en/admin/patient/add')
                 break;
-            case 'edit': this.router.navigateByUrl(`en/admin/settings/patient/edit-patient/${x.data[0]._id}`); break;
+            case 'edit': this.router.navigateByUrl(`en/admin/patient/edit/${x.data[0]._id}`); break;
             case 'delete':
                 const dialogData = { maxWidth: '320px', title: 'Delete', confirmText: 'Permanently' } as ConfirmOptions
                 if (await this.confirmService.openWarning(dialogData)) {
