@@ -1,0 +1,5 @@
+<div class="flex flex-wrap">
+    <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4" *ngFor="let article of articals">
+      <article-card [articleCard]="article" (mmousedown)="goToArticle(article._id)"></article-card>
+    </div>
+  </div>

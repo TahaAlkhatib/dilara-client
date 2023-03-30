@@ -8,6 +8,9 @@ import { HomeComponentPage } from './home-page/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { AuthNavbarComponent } from './auth-navbar/auth-navbar.component';
 import { PagesDropdownComponent } from './pages-dropdown/pages-dropdown.component';
+import { ArticlesComponent } from './articles/articles.component';
+import { ArticleCardComponent } from './articles/article-card/article-card.component';
+import { ArticleComponent } from './articles/article/article.component';
 
 @NgModule({
   imports: [
@@ -20,7 +23,10 @@ import { PagesDropdownComponent } from './pages-dropdown/pages-dropdown.componen
     HomeComponentPage,
     FooterComponent,
     AuthNavbarComponent,
-    PagesDropdownComponent
+    PagesDropdownComponent,
+    ArticlesComponent,
+    ArticleCardComponent,
+    ArticleComponent
   ]
 })
 export class HomeModule { }
