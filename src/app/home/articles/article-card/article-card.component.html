@@ -1,16 +1,20 @@
 <div class="px-6">
-    <img
-      alt="..."
-      [src]='articleCard.img'
-      class="shadow-lg  mx-auto max-w-120-px"
-    />
+    <div class="flex flex-wrap justify-center">
+      <div class="w-6/12 sm:w-4/12 px-4">
+        <img [src]='articleCard.img' alt="..." class="shadow rounded max-w-full h-auto align-middle border-none" />
+      </div>
+    </div>
     <div class="pt-6 text-center">
       <h5 class="text-xl font-bold">{{articleCard.name}}</h5>
       <p class="mt-1 text-sm text-blueGray-400 uppercase font-semibold">
         {{articleCard.text}}
       </p>
+      
       <div class="mt-6">
-        <button
+        <button class="text-red-500 bg-transparent border border-solid border-red-500 hover:bg-red-500 hover:text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+          Read more
+        </button>
+        <!-- <button
           class="bg-pink-500 text-white w-8 h-8 rounded-full outline-none focus:outline-none mr-1 mb-1"
           type="button"
         >
@@ -33,7 +37,7 @@
           type="button"
         >
           <i class="fab fa-instagram"></i>
-        </button>
+        </button> -->
       </div>
     </div>
   </div>

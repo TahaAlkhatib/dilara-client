@@ -11,6 +11,7 @@ import { PagesDropdownComponent } from './pages-dropdown/pages-dropdown.componen
 import { ArticlesComponent } from './articles/articles.component';
 import { ArticleCardComponent } from './articles/article-card/article-card.component';
 import { ArticleComponent } from './articles/article/article.component';
+import { LandingComponent } from './home-page/landing/landing.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { ArticleComponent } from './articles/article/article.component';
     PagesDropdownComponent,
     ArticlesComponent,
     ArticleCardComponent,
-    ArticleComponent
+    ArticleComponent,
+    LandingComponent
   ]
 })
 export class HomeModule { }

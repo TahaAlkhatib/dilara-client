@@ -5,6 +5,7 @@ export * from './payment'
 export * from './settings'
 export * from './notifications'
 export * from './permission-record'
+export * from './article'
 
 
 
