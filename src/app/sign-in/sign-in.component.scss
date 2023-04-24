@@ -1,0 +1,45 @@
+:host {
+  background: linear-gradient(115deg,#00375F, #00569D);
+  mix-blend-mode: normal;
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  display: grid;
+  gap: 10px;
+  place-content: center;
+  .input-holder {
+    background-color: white;
+    input{
+      min-width: 260px;
+    }
+  }
+ 
+  .btns {
+    display: grid;
+    width: 100%;
+    gap: 10px;
+    justify-items: center;
+    button {
+      max-width: none;
+    }
+    a {
+      color: var(--color-secondry);
+    }
+  }
+}
+
+p {
+  color: var(--color-secondry);
+  text-align: center;
+  margin: 0;
+}
+.btn{
+  background-color: #FFFFFF;
+    color: var(--color-primary);
+    min-width: 100px;
+    max-width: 110px;
+}

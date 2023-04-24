@@ -1,0 +1,13 @@
+<img src="/assets/general/logo.png" alt="" width="200px">
+<form autocomplete="off" (ngSubmit)="onSubmit()" #f="ngForm">
+    <div class="input-holder block">
+        <input type="text" id="userName" name="userName" onfocus="this.removeAttribute('readonly');" readonly   placeholder="{{'User name'| text}}" [(ngModel)]="userName">
+    </div>
+    <div class="input-holder block">
+        <input type="password" id="password" name="password" onfocus="this.removeAttribute('readonly');" readonly  placeholder="{{'password'|text}}" [(ngModel)]="password">
+    </div>
+<div class="btns">
+    <a href="#">{{'forget password'|text}}</a>
+    <button class="btn" type="submit">{{'Sign in'|text}}</button>
+</div>
+</form>

@@ -21,7 +21,7 @@ export class UserListComponent implements OnInit {
     selection: User[]
     adapter: DataAdapter
     columns: ColumnsDescriptor = {
-        name: 1, email: 1, department: 1
+        name: 1, email: 1, username: 1
     }
     actions: ActionDescriptor[] = [
         { variant: 'icon', name: 'edit', icon: 'edit', menu: false },
@@ -35,7 +35,7 @@ export class UserListComponent implements OnInit {
         private confirmService: ConfirmService, public router: Router,private activatedRoute:ActivatedRoute,private appService:AppService) { }
 
     ngOnInit(): void {
-        let source = new ServerDataSource(this.ds, '/user', ['_id', 'name', 'email', 'department'])
+        let source = new ServerDataSource(this.ds, '/user', ['_id', 'name', 'email', 'username'])
         this.adapter = new DataAdapter(source, 'email', 'name')
     }
 
@@ -61,9 +61,9 @@ export class UserListComponent implements OnInit {
                 await firstValueFrom(this.http.post(`${environment.server_base_url}/auth/adminreset`,{email:x.data[0].email, new_password:'Master123'})) 
                 break
             case 'create':
-                this.router.navigateByUrl('app/tabs/account/add-user')
+                this.router.navigateByUrl('en/account/add-user')
                 break;
-            case 'edit': this.router.navigateByUrl(`app/tabs/account/edit-user/${x.data[0]._id}`); break;
+            case 'edit': this.router.navigateByUrl(`en/account/edit-user/${x.data[0]._id}`); break;
             case 'delete':
                 const dialogData = { maxWidth: '320px', title: 'Delete', confirmText: 'Permanently' } as ConfirmOptions
                 if (await this.confirmService.openWarning(dialogData)) {

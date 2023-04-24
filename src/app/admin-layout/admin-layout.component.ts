@@ -22,7 +22,7 @@ export class AdminLayoutComponent implements OnInit {
         {
             title: 'Appointments',
             url: 'appointment',
-            prefix: 'admin',
+            prefix: 'admin/',
             icon: 'calendar',
             open: false,
             children: [
@@ -41,7 +41,7 @@ export class AdminLayoutComponent implements OnInit {
         {
             title: 'Patients',
             url: 'patient',
-            prefix: 'admin',
+            prefix: 'admin/',
             icon: 'people',
             open: false,
             children: [
@@ -60,7 +60,7 @@ export class AdminLayoutComponent implements OnInit {
         {
             title: 'Payments',
             url: 'payment',
-            prefix: 'admin',
+            prefix: 'admin/',
             icon: 'people',
             open: false,
             children: [
@@ -79,7 +79,7 @@ export class AdminLayoutComponent implements OnInit {
         {
             title: 'Account',
             url: 'account',
-            prefix: '/',
+            prefix: '',
             icon: 'person',
             open: false,
             children: [
@@ -98,7 +98,7 @@ export class AdminLayoutComponent implements OnInit {
         {
             title: 'Settings',
             url: 'settings',
-            prefix: 'admin',
+            prefix: 'admin/',
             icon: 'map',
             open: false,
             children: [
@@ -115,7 +115,7 @@ export class AdminLayoutComponent implements OnInit {
         {
             title: 'Fixed Content',
             url: 'website',
-            prefix: 'admin',
+            prefix: 'admin/',
             icon: 'calendar',
             open: false,
             children: [
@@ -133,7 +133,7 @@ export class AdminLayoutComponent implements OnInit {
         }, {
             title: 'Articles',
             url: 'article',
-            prefix: 'admin',
+            prefix: 'admin/',
             icon: 'people',
             open: false,
             children: [
@@ -152,7 +152,7 @@ export class AdminLayoutComponent implements OnInit {
         {
             title: 'Settings',
             url: 'settings',
-            prefix: 'admin',
+            prefix: 'admin/',
             icon: 'map',
             open: false,
             children: [
@@ -229,7 +229,7 @@ export class AdminLayoutComponent implements OnInit {
 
     navigate(p, sub) {
         if (sub)
-            this.router.navigateByUrl(`en/${p.prefix}/${p.url}/${sub.url}`)
+            this.router.navigateByUrl(`en/${p.prefix}${p.url}/${sub.url}`)
         else {
             if (!p.children?.length)
                 this.router.navigateByUrl(`en/${p.prefix}/${p.url}`)

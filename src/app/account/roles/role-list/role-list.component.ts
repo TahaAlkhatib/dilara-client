@@ -50,9 +50,9 @@ export class RoleListComponent implements OnInit {
 
         switch (x.action.name) {
             case 'create':
-                this.router.navigateByUrl('app/tabs/account/role/add-role')
+                this.router.navigateByUrl('en/account/role/add-role')
                 break;
-            case 'edit': this.router.navigateByUrl(`app/tabs/account/role/edit-role/${x.data[0]._id}`); break;
+            case 'edit': this.router.navigateByUrl(`en/account/role/edit-role/${x.data[0]._id}`); break;
             case 'delete':
                 const dialogData = { maxWidth: '320px', title: 'Delete', confirmText: 'Permanently' } as ConfirmOptions
                 if (await this.confirmService.openWarning(dialogData)) {

@@ -20,6 +20,8 @@ import { DynamicFormModule } from '@upupa/dynamic-form';
 import { DynamicFormMaterialThemeModule, materialThemeComponentMapper } from '@upupa/dynamic-form-material-theme';
 import { HtmlEditorComponent } from '@upupa/html-editor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegisterAdminComponent } from './register-admin/register-admin.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 
 const signinProvider: Provider = {
@@ -59,7 +61,7 @@ const htmlMapper = {
     BrowserAnimationsModule,
     UploadModule.forChild(`${environment.server_base_url}/storage`)
 ],
-  declarations: [AppComponent,AdminLayoutComponent],
+  declarations: [AppComponent,AdminLayoutComponent,RegisterAdminComponent,SignInComponent],
   providers: [InAppBrowser],
   bootstrap: [AppComponent]
 })
