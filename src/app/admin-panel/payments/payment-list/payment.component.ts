@@ -20,7 +20,7 @@ export class PaymentComponent implements OnInit {
     selection: Payment[]
     adapter: DataAdapter
     columns: ColumnsDescriptor = {
-        name: 1, lat:1,long:1
+        patientId: 1, amount: 1, dueDate: 1, payDate: 1, status: 1
     }
     actions: ActionDescriptor[] = [
         { variant: 'icon', name: 'preview', icon: 'preview', menu: false },
@@ -30,8 +30,8 @@ export class PaymentComponent implements OnInit {
         { position: 'header', name: 'create', icon: 'add_circle_outline', text: 'Create', bulk: true }
     ]
     ngOnInit(): void {
-        let source = new ServerDataSource(this.ds, '/payment', ['_id', 'name','lat','long'])
-        this.adapter = new DataAdapter(source, '_id', 'name')
+        let source = new ServerDataSource(this.ds, '/payment', ['_id', 'patientId', 'amount', 'dueDate', 'payDate', 'status'])
+        this.adapter = new DataAdapter(source, '_id', 'patientId')
 
     }
 
@@ -62,7 +62,7 @@ export class PaymentComponent implements OnInit {
                 if (await this.confirmService.openWarning(dialogData)) {
                     for (const item of x.data)
                         await this.ds.delete(`payment/${item._id}`)
-                        await this.refresh()
+                    await this.refresh()
                 }
                 break;
             default:

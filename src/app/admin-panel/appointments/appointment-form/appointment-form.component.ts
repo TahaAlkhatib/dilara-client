@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '@upupa/auth';
 import { ActionDescriptor, SnackBarService } from '@upupa/common';
-import { ClientDataSource, DataAdapter, DataService } from '@upupa/data';
-import { CollectStyle, fileField, FormDesign, selectField, textField } from '@upupa/dynamic-form';
+import { ClientDataSource, DataAdapter, DataService, ServerDataSource } from '@upupa/data';
+import { CollectStyle, fileField, FormDesign, selectField, textAreaField, textField } from '@upupa/dynamic-form';
 import { LanguageService } from '@upupa/language';
 import { PageNavigationLink } from '@upupa/membership';
 import { firstValueFrom, ReplaySubject } from 'rxjs';
@@ -18,16 +18,16 @@ export class AppointmentFormComponent implements OnInit {
     loading = new ReplaySubject<boolean>(1);
 
 
-    model:Appointment
+    model: Appointment
+
+
 
     formFields = {
-       '_id': { type: 'field', input: 'hidden', name: '_id', ui: { inputs: { label: 'Email', placeholder: 'Use a valid email' } } },
-       'name': { type: 'field', input: 'text', name: 'name', ui: { inputs: { label: 'name', placeholder: 'name' } }, validations: [{ name: 'required' }] },
-       'address': { type: 'field', input: 'text', name: 'address', ui: { inputs: { label: 'address', placeholder: 'address' } } },
-       'location': { type: 'field', input: 'text', name: 'location', ui: { inputs: { label: 'location', placeholder: 'location' } } },
-       'lat': { type: 'field', input: 'text', name: 'lat', ui: { inputs: { label: 'lat', placeholder: 'lat' } } },
-       'long': { type: 'field', input: 'text', name: 'long', ui: { inputs: { label: 'long', placeholder: 'long' } } },
-       'logo':  fileField('logo', 'Image', '/assets/appointment/logo', undefined, undefined, 1, 1, false) 
+        '_id': { type: 'field', input: 'hidden', name: '_id', ui: { inputs: { label: 'Email', placeholder: 'Use a valid email' } } },
+        'patientId': selectField('patientId', 'Patient', new DataAdapter(new ServerDataSource(this.ds, 'patient', ['_id', 'name']), '_id', 'name', '_id'), 'Patient', null, 'outline', null, [{ name: 'required' }]),
+        'date': { type: 'field', input: 'date', name: 'date', ui: { inputs: { label: 'Date', placeholder: 'Date' } } },
+        'status': selectField('status', 'Status', new DataAdapter(new ClientDataSource(['waiting', 'attended', 'canceled', 'skipped'])), 'Status', null, 'outline', 1, [{ name: 'required' }]),
+        'notes': textAreaField('notes', 'Notes', 'Notes', null, 'outline', 3, 6),
     }
 
     constructor(
@@ -42,7 +42,7 @@ export class AppointmentFormComponent implements OnInit {
     async ngOnInit() {
         const appointmentId = this.route.snapshot.paramMap.get('id')
         if (appointmentId) {
-             this.model = await firstValueFrom(this.ds.get<Appointment>(`appointment/${appointmentId}`))
+            this.model = await firstValueFrom(this.ds.get<Appointment>(`appointment/${appointmentId}`))
         }
     }
     async submit() {
@@ -56,7 +56,7 @@ export class AppointmentFormComponent implements OnInit {
         this.router.navigateByUrl('en/admin/appointment/list')
     }
 
-    goBack(){
+    goBack() {
         window.history.back()
     }
 }

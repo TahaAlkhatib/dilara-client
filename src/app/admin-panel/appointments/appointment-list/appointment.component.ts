@@ -20,7 +20,7 @@ export class AppointmentComponent implements OnInit {
     selection: Appointment[]
     adapter: DataAdapter
     columns: ColumnsDescriptor = {
-        name: 1, lat:1,long:1
+        patientId: 1, date:1,status:1
     }
     actions: ActionDescriptor[] = [
         { variant: 'icon', name: 'preview', icon: 'preview', menu: false },
@@ -30,8 +30,8 @@ export class AppointmentComponent implements OnInit {
         { position: 'header', name: 'create', icon: 'add_circle_outline', text: 'Create', bulk: true }
     ]
     ngOnInit(): void {
-        let source = new ServerDataSource(this.ds, '/appointment', ['_id', 'name','lat','long'])
-        this.adapter = new DataAdapter(source, '_id', 'name')
+        let source = new ServerDataSource(this.ds, '/appointment', ['_id', 'patientId','date','status'])
+        this.adapter = new DataAdapter(source, '_id', 'patientId')
 
     }
 

@@ -20,7 +20,7 @@ export class PatientComponent implements OnInit {
     selection: Patient[]
     adapter: DataAdapter
     columns: ColumnsDescriptor = {
-        name: 1, lat:1,long:1
+        name: 1, fatherName: 1, motherName: 1, dateOfBirth: 1
     }
     actions: ActionDescriptor[] = [
         { variant: 'icon', name: 'preview', icon: 'preview', menu: false },
@@ -30,7 +30,7 @@ export class PatientComponent implements OnInit {
         { position: 'header', name: 'create', icon: 'add_circle_outline', text: 'Create', bulk: true }
     ]
     ngOnInit(): void {
-        let source = new ServerDataSource(this.ds, '/patient', ['_id', 'name','lat','long'])
+        let source = new ServerDataSource(this.ds, '/patient', ['_id', 'name', 'fatherName', 'motherName', 'dateOfBirth'])
         this.adapter = new DataAdapter(source, '_id', 'name')
 
     }
@@ -62,7 +62,7 @@ export class PatientComponent implements OnInit {
                 if (await this.confirmService.openWarning(dialogData)) {
                     for (const item of x.data)
                         await this.ds.delete(`patient/${item._id}`)
-                        await this.refresh()
+                    await this.refresh()
                 }
                 break;
             default:

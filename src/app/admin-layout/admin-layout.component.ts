@@ -65,12 +65,12 @@ export class AdminLayoutComponent implements OnInit {
             open: false,
             children: [
                 {
-                    title: 'New Patient',
+                    title: 'New Payment',
                     url: 'add',
                     icon: 'document'
                 },
                 {
-                    title: 'Patients List',
+                    title: 'Payments List',
                     url: 'list',
                     icon: 'document'
                 }
